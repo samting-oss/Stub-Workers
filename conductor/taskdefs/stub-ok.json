@@ -1,0 +1,23 @@
+{
+  "name": "stub-ok",
+  "description": "Returns COMPLETED with the input payload echoed back. Configurable latency via latencyMs.",
+  "ownerEmail": "sam.ting@orkes.io",
+  "retryCount": 0,
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 5,
+  "timeoutSeconds": 120,
+  "responseTimeoutSeconds": 60,
+  "timeoutPolicy": "TIME_OUT_WF",
+  "inputKeys": ["payload", "latencyMs"],
+  "outputKeys": ["echoed", "latencyMs", "receivedAt"],
+  "inputSchema": {
+    "name": "stub-ok.input",
+    "version": 1,
+    "type": "JSON"
+  },
+  "outputSchema": {
+    "name": "stub-ok.output",
+    "version": 1,
+    "type": "JSON"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "stub-compensate",
+  "description": "Logs that a compensation step ran for a given correlationId. Idempotent — re-invocation with the same correlationId is a no-op.",
+  "ownerEmail": "sam.ting@orkes.io",
+  "retryCount": 1,
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 5,
+  "timeoutSeconds": 120,
+  "responseTimeoutSeconds": 60,
+  "timeoutPolicy": "TIME_OUT_WF",
+  "inputKeys": ["correlationId"],
+  "outputKeys": ["compensated", "correlationId", "alreadyCompensated", "compensatedAt"],
+  "inputSchema": {
+    "name": "stub-compensate.input",
+    "version": 1,
+    "type": "JSON"
+  },
+  "outputSchema": {
+    "name": "stub-compensate.output",
+    "version": 1,
+    "type": "JSON"
+  }
+}

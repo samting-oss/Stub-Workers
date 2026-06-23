@@ -1,0 +1,27 @@
+{
+  "name": "stub-fail.input",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-fail Input",
+    "description": "Input parameters for the stub-fail worker.",
+    "properties": {
+      "httpStatus": {
+        "type": "integer",
+        "title": "HTTP Status Code",
+        "description": "The HTTP status code to simulate. 400 → non-retryable (terminal); 429/500/503 → retryable.",
+        "enum": [400, 429, 500, 503],
+        "default": 500
+      },
+      "correlationId": {
+        "type": "string",
+        "title": "Correlation ID",
+        "description": "Optional correlation ID passed through to the output for tracing.",
+        "default": ""
+      }
+    },
+    "required": ["httpStatus"]
+  }
+}

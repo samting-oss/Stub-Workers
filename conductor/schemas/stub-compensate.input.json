@@ -1,0 +1,21 @@
+{
+  "name": "stub-compensate.input",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-compensate Input",
+    "description": "Input parameters for the stub-compensate worker.",
+    "properties": {
+      "correlationId": {
+        "type": "string",
+        "title": "Correlation ID",
+        "description": "Identifies the business transaction being compensated. Must be unique per logical transaction. Re-invocation with the same ID is a safe no-op.",
+        "minLength": 1,
+        "examples": ["order-1234", "txn-abc-xyz"]
+      }
+    },
+    "required": ["correlationId"]
+  }
+}

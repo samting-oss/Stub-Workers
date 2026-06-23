@@ -1,0 +1,18 @@
+# Environment / credentials — never commit these
+.env
+*.env.local
+
+# TypeScript build output and dependencies
+ts/node_modules/
+ts/dist/
+
+# .NET build output
+csharp/bin/
+csharp/obj/
+
+# macOS
+.DS_Store
+
+# Logs from local worker runs
+*.log
+nohup.out

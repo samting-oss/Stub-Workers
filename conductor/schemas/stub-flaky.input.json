@@ -1,0 +1,22 @@
+{
+  "name": "stub-flaky.input",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-flaky Input",
+    "description": "Input parameters for the stub-flaky worker.",
+    "properties": {
+      "failUntilAttempt": {
+        "type": "integer",
+        "title": "Fail Until Attempt (N)",
+        "description": "Number of times to fail before succeeding. The worker fails on attempts 1..N and succeeds on attempt N+1. Conductor's retryCount drives this — the worker is stateless.",
+        "minimum": 0,
+        "default": 1,
+        "examples": [1, 2, 3]
+      }
+    },
+    "required": ["failUntilAttempt"]
+  }
+}

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>StubCsharp</AssemblyName>
+    <RootNamespace>StubCsharp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Conductor .NET SDK — https://github.com/conductor-oss/csharp-sdk -->
+    <PackageReference Include="conductor-csharp" Version="1.*" />
+    <!-- Required by the SDK for hosting / logging -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.*" />
+  </ItemGroup>
+
+</Project>

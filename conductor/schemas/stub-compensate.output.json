@@ -1,0 +1,35 @@
+{
+  "name": "stub-compensate.output",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-compensate Output",
+    "description": "Output produced by the stub-compensate worker.",
+    "properties": {
+      "compensated": {
+        "type": "boolean",
+        "title": "Compensated",
+        "description": "Always true when the task completes successfully."
+      },
+      "correlationId": {
+        "type": "string",
+        "title": "Correlation ID",
+        "description": "The correlationId that was (or had already been) compensated."
+      },
+      "alreadyCompensated": {
+        "type": "boolean",
+        "title": "Already Compensated",
+        "description": "True if this correlationId had already been compensated in a prior invocation (idempotency guard was hit)."
+      },
+      "compensatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Compensated At",
+        "description": "ISO 8601 timestamp of this task execution."
+      }
+    },
+    "required": ["compensated", "correlationId", "alreadyCompensated", "compensatedAt"]
+  }
+}

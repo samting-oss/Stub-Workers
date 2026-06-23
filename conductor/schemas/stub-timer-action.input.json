@@ -1,0 +1,30 @@
+{
+  "name": "stub-timer-action.input",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-timer-action Input",
+    "description": "Input parameters for the stub-timer-action worker.",
+    "properties": {
+      "timerStartedAt": {
+        "title": "Timer Started At",
+        "description": "The moment the timer was armed. Accepts an ISO 8601 string or a Unix epoch in milliseconds. The worker computes elapsedMs = now - timerStartedAt.",
+        "oneOf": [
+          {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp, e.g. 2026-06-22T14:00:00.000Z"
+          },
+          {
+            "type": "integer",
+            "description": "Unix epoch in milliseconds, e.g. 1750600000000"
+          }
+        ],
+        "examples": ["2026-06-22T14:00:00.000Z", 1750600000000]
+      }
+    },
+    "required": ["timerStartedAt"]
+  }
+}

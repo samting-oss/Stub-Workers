@@ -1,0 +1,23 @@
+{
+  "name": "stub-fail",
+  "description": "Returns a configurable failure outcome. 400→FAILED_WITH_TERMINAL_ERROR (non-retryable); 429/500/503→FAILED (retryable). Used to test retry, non-retryable classification, and compensation triggers.",
+  "ownerEmail": "sam.ting@orkes.io",
+  "retryCount": 3,
+  "retryLogic": "EXPONENTIAL_BACKOFF",
+  "retryDelaySeconds": 5,
+  "timeoutSeconds": 120,
+  "responseTimeoutSeconds": 60,
+  "timeoutPolicy": "TIME_OUT_WF",
+  "inputKeys": ["httpStatus", "correlationId"],
+  "outputKeys": ["httpStatus", "retryable", "correlationId"],
+  "inputSchema": {
+    "name": "stub-fail.input",
+    "version": 1,
+    "type": "JSON"
+  },
+  "outputSchema": {
+    "name": "stub-fail.output",
+    "version": 1,
+    "type": "JSON"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "stub-flaky",
+  "description": "Fails the first N calls then succeeds. N is controlled by failUntilAttempt per execution. Uses Conductor's own retryCount so the worker is stateless. Used to test retry/backoff.",
+  "ownerEmail": "sam.ting@orkes.io",
+  "retryCount": 5,
+  "retryLogic": "EXPONENTIAL_BACKOFF",
+  "retryDelaySeconds": 3,
+  "timeoutSeconds": 300,
+  "responseTimeoutSeconds": 60,
+  "timeoutPolicy": "TIME_OUT_WF",
+  "inputKeys": ["failUntilAttempt"],
+  "outputKeys": ["succeededOnAttempt", "failUntilAttempt"],
+  "inputSchema": {
+    "name": "stub-flaky.input",
+    "version": 1,
+    "type": "JSON"
+  },
+  "outputSchema": {
+    "name": "stub-flaky.output",
+    "version": 1,
+    "type": "JSON"
+  }
+}

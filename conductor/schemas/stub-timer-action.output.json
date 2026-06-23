@@ -1,0 +1,25 @@
+{
+  "name": "stub-timer-action.output",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-timer-action Output",
+    "description": "Output produced by the stub-timer-action worker.",
+    "properties": {
+      "elapsedMs": {
+        "type": ["integer", "null"],
+        "title": "Elapsed (ms)",
+        "description": "Milliseconds elapsed from timerStartedAt to the moment the task executed. Null if timerStartedAt was not provided."
+      },
+      "firedAt": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Fired At",
+        "description": "ISO 8601 timestamp when the task began executing."
+      }
+    },
+    "required": ["firedAt"]
+  }
+}

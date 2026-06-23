@@ -1,0 +1,30 @@
+{
+  "name": "stub-ok.output",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-ok Output",
+    "description": "Output produced by the stub-ok worker.",
+    "properties": {
+      "echoed": {
+        "type": "object",
+        "title": "Echoed Payload",
+        "description": "The input payload mirrored back unchanged."
+      },
+      "latencyMs": {
+        "type": "integer",
+        "title": "Actual Latency (ms)",
+        "description": "The latency that was applied."
+      },
+      "receivedAt": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Received At",
+        "description": "ISO 8601 timestamp when the task began executing."
+      }
+    },
+    "required": ["echoed", "latencyMs", "receivedAt"]
+  }
+}

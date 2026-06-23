@@ -1,0 +1,27 @@
+{
+  "name": "stub-csharp.input",
+  "version": 1,
+  "type": "JSON",
+  "data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "stub-csharp Input",
+    "description": "Input parameters for the stub-csharp (.NET) worker. Identical to stub-ok.",
+    "properties": {
+      "payload": {
+        "type": "object",
+        "title": "Payload",
+        "description": "Arbitrary object to echo back in the output.",
+        "default": {}
+      },
+      "latencyMs": {
+        "type": "integer",
+        "title": "Latency (ms)",
+        "description": "Milliseconds to sleep before completing.",
+        "minimum": 0,
+        "default": 0
+      }
+    },
+    "required": []
+  }
+}

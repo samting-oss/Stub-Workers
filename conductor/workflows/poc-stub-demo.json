@@ -1,0 +1,70 @@
+{
+  "name": "poc-stub-demo",
+  "description": "POC demo workflow: exercises stub-ok (echo + latency), stub-flaky (retry/backoff), stub-fail (retryable 500), stub-compensate, stub-timer-action, and stub-csharp.",
+  "version": 1,
+  "schemaVersion": 2,
+  "ownerEmail": "sam.ting@orkes.io",
+  "restartable": true,
+  "inputParameters": ["payload", "latencyMs", "failUntilAttempt", "correlationId"],
+  "tasks": [
+    {
+      "name": "stub-ok",
+      "taskReferenceName": "echo_step",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "payload": "${workflow.input.payload}",
+        "latencyMs": "${workflow.input.latencyMs}"
+      }
+    },
+    {
+      "name": "stub-flaky",
+      "taskReferenceName": "flaky_step",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "failUntilAttempt": "${workflow.input.failUntilAttempt}"
+      }
+    },
+    {
+      "name": "stub-fail",
+      "taskReferenceName": "fail_retryable_step",
+      "type": "SIMPLE",
+      "optional": true,
+      "inputParameters": {
+        "httpStatus": 500,
+        "correlationId": "${workflow.input.correlationId}"
+      }
+    },
+    {
+      "name": "stub-timer-action",
+      "taskReferenceName": "timer_action_step",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "timerStartedAt": "${workflow.createTime}"
+      }
+    },
+    {
+      "name": "stub-csharp",
+      "taskReferenceName": "csharp_step",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "payload": "${echo_step.output.echoed}",
+        "latencyMs": 0
+      }
+    },
+    {
+      "name": "stub-compensate",
+      "taskReferenceName": "compensate_step",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "correlationId": "${workflow.input.correlationId}"
+      }
+    }
+  ],
+  "outputParameters": {
+    "echoed": "${echo_step.output.echoed}",
+    "flakySucceededOnAttempt": "${flaky_step.output.succeededOnAttempt}",
+    "timerElapsedMs": "${timer_action_step.output.elapsedMs}",
+    "csharpReceivedAt": "${csharp_step.output.receivedAt}",
+    "compensated": "${compensate_step.output.compensated}"
+  }
+}
